@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.0)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -pedantic")
+project(5lab)
+add_executable(oop_exercise_05
+header/Read_input.hpp
+template/Read_input.tpp
+header/Rhomb.h
+template/Rhomb.tpp
+header/Queue.h
+template/Queue.tpp
+header/QueueEl.h
+template/QueueEl.tpp
+header/iterator.h
+source/Read_input.cpp
+source/Rhomb.cpp
+source/Queue.cpp
+source/QueueEl.cpp
+source/iterator.cpp
+source/main.cpp)
