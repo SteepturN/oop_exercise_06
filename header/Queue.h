@@ -3,14 +3,16 @@
 #include <memory>
 #include "../header/QueueEl.h"
 #include "../header/Rhomb.h"
-template <typename T>
+template <class T, class Alloc = std::allocator<QueueEl<T>>>
 class Queue {
 public:
 	//null - > begin
 	class iterator;
+	using traits = std::allocator_traits<Alloc>;
 	std::shared_ptr<QueueEl<T>> zero_el;
 	std::shared_ptr<QueueEl<T>> end_el;
 	unsigned int size;
+	Alloc alloc;
 
 	Queue();
 	~Queue();
