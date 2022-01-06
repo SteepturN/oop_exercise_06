@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -pedantic")
 project(6lab)
-add_executable(oop_exercise_05
+add_executable(oop_exercise_06
 header/Read_input.hpp
 source/Allocator.cpp
 header/Allocator.hpp
