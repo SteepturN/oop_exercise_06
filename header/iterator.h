@@ -23,6 +23,8 @@ public:
 	bool operator==(std::nullptr_t);
 };
 
+template class Queue<Rhomb<int>, Allocator<QueueEl<Rhomb<int> >, 10> >::iterator;
 template class Queue<Rhomb<int>>::iterator;
+#include "../template/Queue.tpp"
 #endif // ITERATOR_H_
 

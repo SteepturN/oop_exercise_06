@@ -3,6 +3,7 @@
 #include <memory>
 #include "../header/QueueEl.h"
 #include "../header/Rhomb.h"
+#include "../header/Allocator.hpp"
 template <class T, class Alloc = std::allocator<QueueEl<T>>>
 class Queue {
 public:

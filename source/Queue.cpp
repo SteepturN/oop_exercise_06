@@ -2,6 +2,8 @@
 #include "../header/Queue.h"
 #include "../header/QueueEl.h"
 #include "../header/iterator.h"
+#include "../header/Allocator.hpp"
+#include <memory>
 //""
 /*
 ‘std::shared_ptr<QueueEl<Rhomb<int> > >::reset(Rhomb<int>*&, Queue<T, Alloc>::Queue<Rhomb<int>, std::allocator<Rhomb<int> > >::<lambda(Rhomb<int>*)>&, std::allocator<Rhomb<int> >&)’
@@ -17,10 +19,7 @@ home/steep/educat/instit/oop/LR6/source/Queue.cpp: In instantiation of ‘Queue<
 */
 template <typename T, typename Alloc> Queue<T, Alloc>::Queue()
 	: zero_el(), end_el(), size(0), alloc() {
-	QueueEl<T>* pointer = traits::allocate(alloc, 1);
-	auto deleter = [this](QueueEl<T>* p){traits::destroy(alloc, p);};
-	traits::construct(alloc, pointer, T(), nullptr);
-	zero_el.reset(pointer, deleter, alloc);
+	zero_el = std::allocate_shared<QueueEl<T>>(alloc);
 	end_el = zero_el;
 }
 
@@ -70,3 +69,5 @@ template <typename T, typename Alloc> std::ostream& operator<<(std::ostream& cou
     }
     return cout;
 }
+
+#include "../template/Queue.tpp"

@@ -39,3 +39,4 @@ template <typename T, typename Alloc>
 bool Queue<T, Alloc>::iterator::operator==(std::nullptr_t) {
 	return (prev_el.lock() == nullptr);
 }
+#include "../template/Queue.tpp"
