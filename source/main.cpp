@@ -1,6 +1,6 @@
 #include <iostream>
 #include "../header/Queue.h"
-#include "../header/Rhomb.h"
+#include "../header/Square.h"
 #include "../header/Read_input.hpp"
 #include "../header/iterator.h"
 #include "../header/QueueEl.h"
@@ -12,12 +12,12 @@
 
 int main(int argc, char *argv[]) {
 	std::string help_message = "You can use\n\
---put rhomb: p [(point) 2 times and lenght of a side]\n\
+--put square: p [(point) 2 times and lenght of a side]\n\
 --delete by figure number: d (number of figure)\n\
 --print container: pr\n\
 --print number of figures, which area is less then given: ar (area)\n\
 --exit\n";
-	Queue<Rhomb<int>, Allocator<QueueEl<Rhomb<int>>, 10>> queue;
+	Queue<Square<int>, Allocator<QueueEl<Square<int>>, 10>> queue;
 	char ch(' ');
 	char command[20];
 	std::set<std::string> valid_commands = {"p", "pr", "d", "exit", "ar"};
@@ -40,11 +40,11 @@ int main(int argc, char *argv[]) {
 		std::string&& command_string = static_cast<std::string>(command);
 		if(command_string == "exit") return 0;
 		if(command_string == "p") {
-			Rhomb<int> rhomb;
-			if(get_value<Rhomb<int>>(rhomb) != VALID_INPUT)
-				std::cout << "wrong input";
+			Square<int> square;
+			if(get_value<Square<int>>(square) != VALID_INPUT)
+				std::cout << "wrong input\n";
 			else {
-				queue.push(rhomb);
+				queue.push(square);
 			}
 		} else if(command_string == "pr") {
 			std::for_each(queue.begin(), queue.end(), [](auto&& queue_el){
@@ -74,10 +74,10 @@ int main(int argc, char *argv[]) {
 		} else if(command_string == "ar"){
 			unsigned int area = 0;
 			if(get_value<unsigned int>(area) != VALID_INPUT)
-				std::cout << "wrong input";
+				std::cout << "wrong input\n";
 			else
 				std::cout << std::count_if(queue.begin(), queue.end(),
-				                           [area](const Rhomb<int>& r)
+				                           [area](const Square<int>& r)
 				                           {return r.area() < area;})
 				          << std::endl;
 		}

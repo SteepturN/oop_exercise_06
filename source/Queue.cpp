@@ -1,4 +1,4 @@
-#include "../header/Rhomb.h"
+#include "../header/Square.h"
 #include "../header/Queue.h"
 #include "../header/QueueEl.h"
 #include "../header/iterator.h"
@@ -6,13 +6,13 @@
 #include <memory>
 //""
 /*
-‘std::shared_ptr<QueueEl<Rhomb<int> > >::reset(Rhomb<int>*&, Queue<T, Alloc>::Queue<Rhomb<int>, std::allocator<Rhomb<int> > >::<lambda(Rhomb<int>*)>&, std::allocator<Rhomb<int> >&)’
+‘std::shared_ptr<QueueEl<Square<int> > >::reset(Square<int>*&, Queue<T, Alloc>::Queue<Square<int>, std::allocator<Square<int> > >::<lambda(Square<int>*)>&, std::allocator<Square<int> >&)’
    13 |  zero_el.reset(pointer, deleter, alloc);
       |  ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
 
-home/steep/educat/instit/oop/LR6/source/Queue.cpp: In instantiation of ‘Queue<T, Alloc>::Queue() [with T = Rhomb<int>; Alloc = std::allocator<Rhomb<int> >]’:
+home/steep/educat/instit/oop/LR6/source/Queue.cpp: In instantiation of ‘Queue<T, Alloc>::Queue() [with T = Square<int>; Alloc = std::allocator<Square<int> >]’:
 /home/steep/educat/instit/oop/LR6/source/../header/../template/Queue.tpp:2:16:   required from here
-/home/steep/educat/instit/oop/LR6/source/Queue.cpp:16:15: error: no matching function for call to ‘std::shared_ptr<QueueEl<Rhomb<int> > >::reset(Rhomb<int>*&, Queue<T, Alloc>::Queue<Rhomb<int>, std::allocator<Rhomb<int> > >::<lambda(QueueEl<Rhomb<int> >*)>&, std::allocator<Rhomb<int> >&)’
+/home/steep/educat/instit/oop/LR6/source/Queue.cpp:16:15: error: no matching function for call to ‘std::shared_ptr<QueueEl<Square<int> > >::reset(Square<int>*&, Queue<T, Alloc>::Queue<Square<int>, std::allocator<Square<int> > >::<lambda(QueueEl<Square<int> >*)>&, std::allocator<Square<int> >&)’
    16 |  zero_el.reset(pointer, deleter, alloc);
       |  ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -1,7 +1,7 @@
 #ifndef LISTEL_H_
 #define LISTEL_H_
 #include <memory>
-#include "../header/Rhomb.h"
+#include "../header/Square.h"
 template<typename T>
 class QueueEl {
 public:

@@ -1,2 +1,2 @@
 #pragma once
-template class QueueEl<Rhomb<int>>;
+template class QueueEl<Square<int>>;

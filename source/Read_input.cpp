@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <set>
 #include "../header/Read_input.hpp"
-#include "../header/Rhomb.h"
+#include "../header/Square.h"
 #include "../header/Queue.h"
 
 read_return_t get_command(std::set<std::string>& valid_commands, char* command)

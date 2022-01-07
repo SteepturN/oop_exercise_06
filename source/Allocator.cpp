@@ -35,7 +35,9 @@ T* Allocator<T, Size>::allocate(int n) {
 		free_elements->pop();
 		if(block.size > sizeof(T)) {
 			allocated_memory = static_cast<char*>(block.memory);
-			free_elements->push(Block(block.size-sizeof(T), static_cast<char*>(block.memory+sizeof(T))));
+			free_elements->push(
+				Block(block.size-sizeof(T),
+				      static_cast<char*>(block.memory) + sizeof(T)));
 			found = true;
 		} else if (block.size == sizeof(T)) {
 			allocated_memory = static_cast<char*>(block.memory);

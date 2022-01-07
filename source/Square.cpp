@@ -3,23 +3,23 @@
 #include <iostream>
 #include <cmath>
 
-#include "../header/Rhomb.h"
+#include "../header/Square.h"
 
 template <typename T>
-Rhomb<T>::Rhomb(const Rhomb<T>& obj)
+Square<T>::Square(const Square<T>& obj)
 	: verteces(obj.verteces) {}
 template <typename T>
-Rhomb<T>::Rhomb()
+Square<T>::Square()
 	: verteces(std::vector<std::pair<T, T>>(NUM_OF_VERTECES)) {}
 template <typename T>
-Rhomb<T>& Rhomb<T>::operator=(const Rhomb<T>& obj) noexcept {
+Square<T>& Square<T>::operator=(const Square<T>& obj) noexcept {
 	for(int i = 0; i < NUM_OF_VERTECES; ++i) {
 		verteces[i] = obj.verteces[i];
 	}
 	return *this;
 }
 template <typename T>
-bool Rhomb<T>::operator==(const Rhomb<T>& obj) const noexcept{
+bool Square<T>::operator==(const Square<T>& obj) const noexcept{
 	bool result = true;
 	for(int i = 0; i < NUM_OF_VERTECES; ++i) {
 		if(verteces[i] != obj.verteces[i]) {
@@ -30,8 +30,8 @@ bool Rhomb<T>::operator==(const Rhomb<T>& obj) const noexcept{
 	return result;
 }
 template <typename T>
-std::ostream& operator<<(std::ostream& cout, const Rhomb<T>& obj) {
-	cout << "rhomb\nsides' length:\n";
+std::ostream& operator<<(std::ostream& cout, const Square<T>& obj) {
+	cout << "square\nsides' length:\n";
 	for(int i = 0; i < NUM_OF_VERTECES; ++i) {
 		auto v1 = obj.verteces[i];
 		auto v2 = obj.verteces[(i + 1) % NUM_OF_VERTECES];
@@ -46,15 +46,15 @@ template <typename T>
 double distance(std::pair<T, T> o1, std::pair<T, T> o2) {
 	return sqrt(pow(o1.first - o2.first, 2)+pow(o1.second - o2.second, 2));
 }
-//«std::istream& operator>><int>(std::istream&, Rhomb<int>&)»
+//«std::istream& operator>><int>(std::istream&, Square<int>&)»
 template <typename T>
-std::istream& operator>>(std::istream& cin, Rhomb<T>& t) {
+std::istream& operator>>(std::istream& cin, Square<T>& t) {
 	enum {
 	FIRST_AXIS = 0,
 	SECOND_AXIS = 1,
     };
 	char ch(' ');
-	Rhomb<T> copy = t;
+	Square<T> copy = t;
 	for(int i = 0, cur_axis = 0; i < ( NUM_OF_VERTECES - 1 ) * 2;
 	    ++i, cur_axis = (cur_axis + 1)%2) {
 		while((ch == '\t') || (ch == ' ') || (ch == '\n')) {
@@ -75,10 +75,10 @@ std::istream& operator>>(std::istream& cin, Rhomb<T>& t) {
 			return cin;
 		}
 	}
-	if(distance(t.verteces[0], t.verteces[1]) !=
-	   distance(t.verteces[1], t.verteces[2])) {
-		std::cout << distance(t.verteces[0], t.verteces[1]) << ' ' <<
-			distance(t.verteces[1], t.verteces[2]);
+	if((distance(t.verteces[0], t.verteces[1]) !=
+	    distance(t.verteces[1], t.verteces[2])) ||
+	   (distance(t.verteces[0], t.verteces[2])
+	    != distance(t.verteces[0], t.verteces[1])*sqrt(2))){
 		t = copy;
 		cin.setstate(std::ios_base::failbit);
 		return cin;
@@ -90,7 +90,7 @@ std::istream& operator>>(std::istream& cin, Rhomb<T>& t) {
 	return cin;
 }
 // template <typename T>
-// void make_2_more_verteces(Rhomb<T>& t, double side_length) {
+// void make_2_more_verteces(Square<T>& t, double side_length) {
 // 	double _distance = distance(t.verteces[0], t.verteces[2]);
 
 // 	std::pair<double, double> center(
@@ -114,15 +114,15 @@ std::istream& operator>>(std::istream& cin, Rhomb<T>& t) {
 // 		static_cast<T>(center.first + side * sin(alpha)),
 // 		static_cast<T>(center.second - side * cos(alpha)));
 // }
-// //std::istream& operator>><int>(std::istream&, Rhomb<int>&)
+// //std::istream& operator>><int>(std::istream&, Square<int>&)
 // template <typename T>
-// std::istream& operator>> (std::istream& cin, Rhomb<T>& t) {
+// std::istream& operator>> (std::istream& cin, Square<T>& t) {
 // 	enum {
 // 	FIRST_AXIS = 0,
 // 	SECOND_AXIS = 1,
 //     };
 // 	char ch(' ');
-// 	Rhomb<T> copy = t;
+// 	Square<T> copy = t;
 // 	for(int i = 0, cur_axis = 0; i < ( NUM_OF_VERTECES / 2 ) * 2;
 // 	    ++i, cur_axis = (cur_axis + 1)%2) {
 // 		while((ch == '\t') || (ch == ' ') || (ch == '\n')) {
@@ -156,7 +156,7 @@ std::istream& operator>>(std::istream& cin, Rhomb<T>& t) {
 // }
 
 template <typename T>
-std::pair<double, double> Rhomb<T>::center() const noexcept{
+std::pair<double, double> Square<T>::center() const noexcept{
 	std::pair<double, double> _center(0, 0);
 	for(int i = 0; i < NUM_OF_VERTECES; ++i) {
 		_center.first+=verteces[i].first;
@@ -166,12 +166,12 @@ std::pair<double, double> Rhomb<T>::center() const noexcept{
 	_center.second/=static_cast<double>(NUM_OF_VERTECES);
 	return _center;
 }
-template <typename T> void Rhomb<T>::coordinates() const noexcept {
+template <typename T> void Square<T>::coordinates() const noexcept {
 	for(int i = 0; i < NUM_OF_VERTECES; ++i)
 		std::cout << '(' << verteces[i].first << ", "
 		          << verteces[i].second << ')';
 }
-template <typename T> double Rhomb<T>::area() const noexcept {
+template <typename T> double Square<T>::area() const noexcept {
 	double area = 0;
 	for(int i = 0; i < NUM_OF_VERTECES; ++i) {
 		area +=
@@ -182,4 +182,4 @@ template <typename T> double Rhomb<T>::area() const noexcept {
 	return area < 0 ? -area : area;
 }
 
-#include "../template/Rhomb.tpp"
+#include "../template/Square.tpp"

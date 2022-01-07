@@ -1,7 +1,7 @@
 #pragma once
 #include <set>
 #include <list>
-#include "../header/Rhomb.h"
+#include "../header/Square.h"
 #include "../header/QueueEl.h"
 template class Allocator<int, 10>;
 template class Allocator<std::_Rb_tree_node<int>, 10>;
@@ -12,16 +12,16 @@ template Allocator<std::_List_node<int>, 10>::Allocator<int, 10>(Allocator<int, 
 template class Allocator<std::_List_node<int>, 10>;
 
 
-template class Allocator<QueueEl<Rhomb<int> >, 10>;
-template class Allocator<std::_Sp_counted_ptr_inplace<QueueEl<Rhomb<int>>, Allocator<QueueEl<Rhomb<int>>, 10>, (__gnu_cxx::_Lock_policy)2>, 10>;
-//template Allocator<std::_Sp_counted_ptr_inplace<QueueEl<Rhomb<int>>, Allocator<QueueEl<Rhomb<int>>, 10>, (__gnu_cxx::_Lock_policy)2>, 10>::Allocator<QueueEl<Rhomb<int>>(Allocator<QueueEl<Rhomb<int>> const&);
-//std::allocator_traits<Allocator<QueueEl<Rhomb<int> >, 10> >::construct(Allocator<QueueEl<Rhomb<int> >, 10>&, QueueEl<Rhomb<int> >*)’
-//‘std::allocator_traits<Allocator<QueueEl<Rhomb<int> >, 10> >::_S_construct(Allocator<QueueEl<Rhomb<int> >, 10>&, QueueEl<Rhomb<int> >*&)’
-template Allocator<std::_Sp_counted_ptr_inplace<QueueEl<Rhomb<int> >, Allocator<QueueEl<Rhomb<int> >, 10>, (__gnu_cxx::_Lock_policy)2>, 10>::Allocator<QueueEl<Rhomb<int> >, 10>(Allocator<QueueEl<Rhomb<int> >, 10> const&);
+template class Allocator<QueueEl<Square<int> >, 10>;
+template class Allocator<std::_Sp_counted_ptr_inplace<QueueEl<Square<int>>, Allocator<QueueEl<Square<int>>, 10>, (__gnu_cxx::_Lock_policy)2>, 10>;
+//template Allocator<std::_Sp_counted_ptr_inplace<QueueEl<Square<int>>, Allocator<QueueEl<Square<int>>, 10>, (__gnu_cxx::_Lock_policy)2>, 10>::Allocator<QueueEl<Square<int>>(Allocator<QueueEl<Square<int>> const&);
+//std::allocator_traits<Allocator<QueueEl<Square<int> >, 10> >::construct(Allocator<QueueEl<Square<int> >, 10>&, QueueEl<Square<int> >*)’
+//‘std::allocator_traits<Allocator<QueueEl<Square<int> >, 10> >::_S_construct(Allocator<QueueEl<Square<int> >, 10>&, QueueEl<Square<int> >*&)’
+template Allocator<std::_Sp_counted_ptr_inplace<QueueEl<Square<int> >, Allocator<QueueEl<Square<int> >, 10>, (__gnu_cxx::_Lock_policy)2>, 10>::Allocator<QueueEl<Square<int> >, 10>(Allocator<QueueEl<Square<int> >, 10> const&);
 
 
-//std::allocator_traits<Allocator<QueueEl<Rhomb<int> >, 10> >::construct(Allocator<QueueEl<Rhomb<int> >, 10>&, QueueEl<Rhomb<int> >*)
-//std::allocator_traits<Allocator<QueueEl<Rhomb<int> >, 10> >::_S_construct(Allocator<QueueEl<Rhomb<int> >, 10>&, QueueEl<Rhomb<int> >*&)’
+//std::allocator_traits<Allocator<QueueEl<Square<int> >, 10> >::construct(Allocator<QueueEl<Square<int> >, 10>&, QueueEl<Square<int> >*)
+//std::allocator_traits<Allocator<QueueEl<Square<int> >, 10> >::_S_construct(Allocator<QueueEl<Square<int> >, 10>&, QueueEl<Square<int> >*&)’
 // /usr/bin/ld: /tmp/ccw0vg9M.o: в функции «main»:
 // /home/steep/educat/tries/alloc.cpp:98: неопределённая ссылка на «Allocator<int, 10>::Allocator()»
 // /usr/bin/ld: /home/steep/educat/tries/alloc.cpp:98: неопределённая ссылка на «Allocator<int, 10>::~Allocator()»
